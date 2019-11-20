@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/index.ts"],"names":["teste"],"mappings":";;;;;;;AAAA,IAAMA,KAAK,GAAG,SAARA,KAAQ;AAAA,SAAM,OAAN;AAAA,CAAd;;eAEeA,K","sourcesContent":["const teste = () => 'teste';\n\nexport default teste;\n"],"file":"index.js"}
