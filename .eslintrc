@@ -6,7 +6,7 @@
     "jest": true,
     "es6": true
   },
-  "plugins": ["flowtype", "import"],
+  "plugins": ["@typescript-eslint/eslint-plugin", "import"],
   "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module",
