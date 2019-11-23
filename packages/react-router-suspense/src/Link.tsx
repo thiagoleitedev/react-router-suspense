@@ -14,7 +14,7 @@ const Link: React.FC<Props> = props => {
   const router = useContext(RoutingContext);
 
   if (router == null) {
-    throw new Error('<Link> requires a routing context to be set.');
+    throw new Error('<Link> requires a routing context to be setsss.');
   }
 
   // When the user clicks, change route
