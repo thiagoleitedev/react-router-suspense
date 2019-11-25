@@ -1,5 +1,5 @@
 import React from 'react';
-import LinkDefault from '../Link';
+import { Link as LinkDefault } from '../Link';
 import { render } from '@testing-library/react';
 
 describe('<Link />', () => {

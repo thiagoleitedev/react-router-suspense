@@ -19,6 +19,7 @@
     "react-relay": "0.0.0-experimental-a1a40b68",
     "react-router": "^5.1.2",
     "react-router-config": "^5.1.1",
+    "react-router-suspense": "0.0.1",
     "relay-runtime": "7.0.0"
   },
   "devDependencies": {

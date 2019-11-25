@@ -1,6 +1,6 @@
 /* eslint no-restricted-globals:0 */
 import React, { useCallback, useContext } from 'react';
-import RoutingContext from './RoutingContext';
+import { RoutingContext } from './RoutingContext';
 
 interface Props {
   to: string;
@@ -10,11 +10,11 @@ interface Props {
  * An alternative to react-router's Link component that works with
  * our custom RoutingContext.
  */
-const Link: React.FC<Props> = props => {
+export const Link: React.FC<Props> = props => {
   const router = useContext(RoutingContext);
 
   if (router == null) {
-    throw new Error('<Link> requires a routing context to be setsss.');
+    throw new Error('<Link> requires a routing context to be sets.');
   }
 
   // When the user clicks, change route
@@ -51,5 +51,3 @@ const Link: React.FC<Props> = props => {
     </a>
   );
 };
-
-export default Link;

@@ -29,9 +29,8 @@ export interface Router {
   subscribe: (callback: (arg: Route) => void) => () => void;
 }
 
-const RoutingContext = React.createContext<Router | null>(null);
+export const RoutingContext = React.createContext<Router | null>(null);
 
 /**
  * A custom context instance for our router type
  */
-export default RoutingContext;

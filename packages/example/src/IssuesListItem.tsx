@@ -1,10 +1,10 @@
-import React from 'react';
-import { useFragment } from 'react-relay/hooks';
-import graphql from 'babel-plugin-relay/macro';
+import React from "react";
+import { useFragment } from "react-relay/hooks";
+import graphql from "babel-plugin-relay/macro";
 
-import Link from './routing/Link';
+import { Link } from "react-router-suspense";
 
-import { IssuesListItem_issue$key } from './__generated__/IssuesListItem_issue.graphql';
+import { IssuesListItem_issue$key } from "./__generated__/IssuesListItem_issue.graphql";
 
 interface Props {
   issue: IssuesListItem_issue$key;
@@ -27,7 +27,7 @@ const IssuesListItem: React.FC<Props> = props => {
         title
       }
     `,
-    props.issue,
+    props.issue
   );
 
   // Describe how to render the data:

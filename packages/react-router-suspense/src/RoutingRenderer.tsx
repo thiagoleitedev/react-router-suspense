@@ -1,17 +1,10 @@
-import React, {
-  useContext,
-  useState,
-  useEffect,
-  Suspense,
-  useTransition,
-} from 'react';
-import RoutingContext, { Entry } from './RoutingContext';
-import ErrorBoundary from '../ErrorBoundary';
-import './RouteRenderer.css';
+import React, { useContext, useState, useEffect, Suspense, useTransition } from 'react';
+import { RoutingContext, Entry } from './RoutingContext';
+import ErrorBoundary from './ErrorBoundary';
 
 const SUSPENSE_CONFIG = { timeoutMs: 2000 };
 
-const RouterRenderer = () => {
+export const RouterRenderer = (props: any) => {
   // Access the router
   const router = useContext(RoutingContext);
 
@@ -100,20 +93,20 @@ const RouterRenderer = () => {
   // Routes can error so wrap in an <ErrorBoundary>
   // Routes can suspend, so wrap in <Suspense>
 
+  const ErrorBoundaryComponent = props.failure || ErrorBoundary;
+  const fallback = props.fallback || null;
+  const pending = props.pending || null;
+
   return (
-    <ErrorBoundary>
-      <Suspense fallback={'Loading fallback...'}>
+    <ErrorBoundaryComponent>
+      <Suspense fallback={fallback}>
         {/* Indicate to the user that a transition is pending, even while showing the previous UI */}
-        {isPending ? (
-          <div className="RouteRenderer-pending">Loading pending...</div>
-        ) : null}
+        {isPending ? pending : null}
         {routeComponent}
       </Suspense>
-    </ErrorBoundary>
+    </ErrorBoundaryComponent>
   );
 };
-
-export default RouterRenderer;
 
 /**
  * The `component` property from the route entry is a Resource, which may or may not be ready.
@@ -129,11 +122,5 @@ export default RouterRenderer;
 const RouteComponent: React.FC<Entry> = props => {
   const Component = props.component!.read()!;
   const { routeData, prepared } = props;
-  return (
-    <Component
-      routeData={routeData}
-      prepared={prepared}
-      children={props.children}
-    />
-  );
+  return <Component routeData={routeData} prepared={prepared} children={props.children} />;
 };

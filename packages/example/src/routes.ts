@@ -1,37 +1,37 @@
-import { preloadQuery } from 'react-relay/hooks';
+import { preloadQuery } from "react-relay/hooks";
 
-import JSResource from './JSResource';
-import RelayEnvironment from './RelayEnvironment';
-import { RouteConfig } from './routing/createRouter';
+import { JSResource } from "react-router-suspense";
+import RelayEnvironment from "./RelayEnvironment";
+import { RouteConfig } from "react-router-suspense";
 
-import PreloadRootQuery, { RootQuery } from './__generated__/RootQuery.graphql';
+import PreloadRootQuery, { RootQuery } from "./__generated__/RootQuery.graphql";
 import PreloadIssuesQuery, {
-  HomeRootIssuesQuery,
-} from './__generated__/HomeRootIssuesQuery.graphql';
+  HomeRootIssuesQuery
+} from "./__generated__/HomeRootIssuesQuery.graphql";
 import PreloadIssueDetailRootQuery, {
-  IssueDetailRootQuery,
-} from './__generated__/IssueDetailRootQuery.graphql';
+  IssueDetailRootQuery
+} from "./__generated__/IssueDetailRootQuery.graphql";
 
 const routes: RouteConfig[] = [
   {
-    component: JSResource('Root', () => import('./Root')),
+    component: JSResource("Root", () => import("./Root")),
     prepare: () => ({
       rootQuery: preloadQuery<RootQuery>(
         RelayEnvironment,
         PreloadRootQuery,
         {
-          owner: 'facebook',
-          name: 'relay',
+          owner: "facebook",
+          name: "relay"
         },
         // The fetchPolicy allows us to specify whether to render from cached
         // data if possible (store-or-network) or only fetch from network
         // (network-only).
-        { fetchPolicy: 'store-or-network' },
-      ),
+        { fetchPolicy: "store-or-network" }
+      )
     }),
     routes: [
       {
-        path: '/',
+        path: "/",
         exact: true,
         /**
          * A lazy reference to the component for the home route. Note that we intentionally don't
@@ -42,7 +42,7 @@ const routes: RouteConfig[] = [
          * implemented in our mini-router yet, but one can imagine iterating over all
          * the matched route entries and calling .load() on each of their components.
          */
-        component: JSResource('HomeRoot', () => import('./HomeRoot')),
+        component: JSResource("HomeRoot", () => import("./HomeRoot")),
         /**
          * A function to prepare the data for the `component` in parallel with loading
          * that component code. The actual data to fetch is defined by the component
@@ -54,34 +54,34 @@ const routes: RouteConfig[] = [
             RelayEnvironment,
             PreloadIssuesQuery,
             {
-              owner: 'facebook',
-              name: 'relay',
+              owner: "facebook",
+              name: "relay"
             },
             // The fetchPolicy allows us to specify whether to render from cached
             // data if possible (store-or-network) or only fetch from network
             // (network-only).
-            { fetchPolicy: 'store-or-network' },
-          ),
-        }),
+            { fetchPolicy: "store-or-network" }
+          )
+        })
       },
       {
-        path: '/issue/:id',
-        component: JSResource('IssueDetailRoot', () =>
-          import('./IssueDetailRoot'),
+        path: "/issue/:id",
+        component: JSResource("IssueDetailRoot", () =>
+          import("./IssueDetailRoot")
         ),
         prepare: params => ({
           issueDetailQuery: preloadQuery<IssueDetailRootQuery>(
             RelayEnvironment,
             PreloadIssueDetailRootQuery,
             {
-              id: params.id,
+              id: params.id
             },
-            { fetchPolicy: 'store-or-network' },
-          ),
-        }),
-      },
-    ],
-  },
+            { fetchPolicy: "store-or-network" }
+          )
+        })
+      }
+    ]
+  }
 ];
 
 export default routes;

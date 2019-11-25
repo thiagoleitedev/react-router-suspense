@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "build": "yarn workspace react-router-suspense build",
+    "build:watch": "yarn workspace react-router-suspense build:watch",
     "test": "jest --projects ./packages/*/"
   },
   "workspaces": {

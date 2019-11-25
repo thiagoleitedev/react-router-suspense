@@ -27,7 +27,7 @@ export interface MatchedRoute<Params extends { [K in keyof Params]?: string }> {
  * The router watches for changes to the current location via the `history` package, maps the
  * location to the corresponding route entry, and then preloads the code and data for the route.
  */
-export default function createRouter(routes: RouteConfig[], options?: BrowserHistoryBuildOptions) {
+export function createRouter(routes: RouteConfig[], options?: BrowserHistoryBuildOptions) {
   // Initialize history
   const history = createBrowserHistory(options);
 
