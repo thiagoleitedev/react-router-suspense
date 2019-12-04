@@ -13,6 +13,8 @@ pids
 
 lib
 
+.env
+
 # mac files
 .DS_Store
 
