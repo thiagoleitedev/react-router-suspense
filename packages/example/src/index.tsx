@@ -19,7 +19,6 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <RelayEnvironmentProvider environment={RelayEnvironment}>
     <RoutingProvider router={router}>
       <RouterRenderer
-        failure={<div>failure...</div>}
         pending={<div>pending...</div>}
         fallback={<div>loading fallback...</div>}
       />
