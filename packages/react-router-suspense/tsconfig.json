@@ -1,14 +1,17 @@
 {
   "compilerOptions": {
-    // "lib": ["dom"],
-    "target": "es2016",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "target": "es5",
     "strict": true,
     "checkJs": false,
+    "skipLibCheck": true,
     "declaration": true,
     "emitDeclarationOnly": true,
     "esModuleInterop": true,
+    "module": "esnext",
     "moduleResolution": "node",
     "outDir": "lib",
+    "isolatedModules": true,
     "strictNullChecks": true,
     "jsx": "react"
   },
