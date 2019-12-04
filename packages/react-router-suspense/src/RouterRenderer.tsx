@@ -1,3 +1,4 @@
+/// <reference types="react/experimental" />
 import React, { useContext, useState, useEffect, Suspense, useTransition } from 'react';
 import { RoutingContext, Entry } from './RoutingContext';
 import ErrorBoundary from './ErrorBoundary';

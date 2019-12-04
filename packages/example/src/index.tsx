@@ -5,9 +5,12 @@ import ReactDOM from "react-dom";
 import { RelayEnvironmentProvider } from "react-relay/hooks";
 import "./index.css";
 import RelayEnvironment from "./RelayEnvironment";
-import RouterRenderer from "./routing/RouteRenderer";
 import routes from "./routes";
-import { createRouter, RoutingProvider } from "react-router-suspense";
+import {
+  createRouter,
+  RoutingProvider,
+  RouterRenderer
+} from "react-router-suspense";
 
 // Uses the custom router setup to define a router instance that we can pass through context
 const router = createRouter(routes);
